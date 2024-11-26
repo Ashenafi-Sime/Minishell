@@ -6,13 +6,13 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:18:03 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/24 17:18:02 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:02:27 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
+/*
 void	init_env(char **env)
 {
 	env[0] = safe_malloc(9);
@@ -88,11 +88,11 @@ int	main(int ac, char **av)
 }
 */
 
-
-int main(int ac, char **av)
+*/
+int	main(int ac, char **av)
 {
-	t_data *data;
-	
+	t_data	*data;
+
 	(void) ac;
 	(void)av;
 	data = (t_data *)safe_malloc(sizeof(t_data));
@@ -104,9 +104,9 @@ int main(int ac, char **av)
 		else
 			data->rl_str = readline("___@minishell\% ");
 		parse_text(data);
-		test_infile(data);
-		test_outfile(data);
-		reset(data);
+		test_infile(data);// Just for testing not part of project 
+		test_outfile(data); //Just for testing not part of project
+		reset(data); // -> there is error with 2d free 
 	}
 	return 0;
 }

@@ -6,13 +6,13 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:53:51 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/26 19:29:02 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:04:48 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_join_all(char **args)
+void	ft_join_all(char **args) // to join all flags of command 
 {
 	int		i;
 	char	*ret;
@@ -34,7 +34,7 @@ void	ft_join_all(char **args)
 	free(ret);
 }
 
-int	cmd_counter(char *str, char c)
+int	cmd_counter(char *str, char c) // to count pipe and output file 
 {
 	int	i;
 	int	counter;
@@ -55,7 +55,7 @@ int	cmd_counter(char *str, char c)
 	return (counter);
 }
 
-int	check_cmd(char *str)
+int	check_cmd(char *str) // to check builtin function 
 {
 	if (!ft_strcmp(str, "cd") || !ft_strcmp(str, "pwd")
 		|| !ft_strcmp(str, "echo") || !ft_strcmp(str, "export")
@@ -67,7 +67,7 @@ int	check_cmd(char *str)
 	return (0);
 }
 
-void	ft_parse_command(t_data *data)
+void	ft_parse_command(t_data *data) // parse command only from command only string 
 {
 	char	**temp;
 	int		i;
@@ -99,7 +99,7 @@ void	ft_parse_command(t_data *data)
 	ft_2dfree(temp);
 }
 
-void	ft_remove_outfile(t_data *data)
+void	ft_remove_outfile(t_data *data) // not fully implemented
 {
 	int	len;
 	int	i;

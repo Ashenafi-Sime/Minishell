@@ -6,7 +6,7 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 22:19:21 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/26 18:56:50 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:05:10 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	ft_parse_output_file1(t_data *data)
 
 
 
-void	ft_parse_output_file(t_data *data)
+void	ft_parse_output_file(t_data *data) // this is easy way 
 {
 	int	i;
 	int	j;
