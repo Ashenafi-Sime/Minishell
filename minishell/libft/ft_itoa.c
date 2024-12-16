@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asdebele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 20:03:39 by asdebele          #+#    #+#             */
-/*   Updated: 2024/03/11 20:03:49 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:31:16 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	cal_len(int n)
 	return (len);
 }
 
-char	*set_value(int n, char *ans, int len)
+static char	*set_value1(int n, char *ans, int len)
 {
 	len--;
 	if (n < 0)
@@ -64,10 +64,10 @@ char	*ft_itoa(int n)
 	else if (n == -2147483648)
 	{
 		ans[len - 1] = '8';
-		set_value(-214748364, ans, len - 1);
+		set_value1(-214748364, ans, len - 1);
 	}
 	else
-		set_value(n, ans, len);
+		set_value1(n, ans, len);
 	ans[len] = '\0';
 	return (ans);
 }

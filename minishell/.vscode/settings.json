@@ -3,6 +3,9 @@
         "minishell.h": "c",
         "fcntl.h": "c",
         "libft.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "history.h": "c",
+        "unistd.h": "c",
+        "ft_printf.h": "c"
     }
 }

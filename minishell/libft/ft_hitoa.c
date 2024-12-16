@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asdebele <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:51:28 by asdebele          #+#    #+#             */
-/*   Updated: 2024/03/22 20:51:34 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:33:01 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	set_value_cap(int nb)
 		return (nb + '0');
 }
 
-static char	set_value(int nb)
+static char	set_val(int nb)
 {
 	if (nb >= 10)
 		return (nb + 87);
@@ -64,7 +64,7 @@ char	*_tostring_(int n, char *ans, int len, int flag)
 		if (flag == 1)
 			ans[len] = set_value_cap(n % 16);
 		else
-			ans[len] = set_value(n % 16);
+			ans[len] = set_val(n % 16);
 		n /= 16;
 		len --;
 	}

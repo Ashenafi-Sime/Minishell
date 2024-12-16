@@ -6,7 +6,7 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:48:20 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/09 11:16:06 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/12/01 14:06:26 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*safe_malloc(size_t bytes)
 
 void	ft_execve(const char *pathname, char *const argv[],	char *const envp[])
 {
-	if (execve(pathname, argv, envp) == -1) 
+	if (execve(pathname, argv, envp) == -1)
 	{
 		perror("execve failed");
 	}
@@ -58,7 +58,6 @@ void	ft_create_file(int *fd, char *name)
 		exit(EXIT_FAILURE);
 	}
 }
-
 
 /*
 void	error_handler(int res, t_op_code op_code)

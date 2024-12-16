@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 20:43:00 by asdebele          #+#    #+#             */
-/*   Updated: 2024/07/15 20:15:34 by asdebele         ###   ########.fr       */
+/*   Created: 2024/12/01 16:56:15 by asdebele          #+#    #+#             */
+/*   Updated: 2024/12/01 17:05:48 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	first_pipe(t_data *data)
 {
-	unsigned char	*d;
+	
+}
 
-	d = (unsigned char *)s;
-	while (n > 0)
-	{
-		*d = (unsigned char) c;
-		d++;
-		n--;
-	}
-	return (s);
+void	mid_pipe(t_data *data)
+{
+	
+}
+
+void	last_pipe(t_data *data)
+{
+	
+}
+
+void	pipe_fun(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	first_pipe(data, i);
+	while (++i < (data->arg_nb - 1))
+		mid_pipe(data);
+	if (i == (data->arg_nb - 1) && i > 0)
+		last_pipe(data);
 }

@@ -6,15 +6,19 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 19:59:56 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/20 17:33:10 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:43:22 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "./ft_printf/ft_printf.h"
 
 typedef struct s_list
 {
@@ -31,6 +35,7 @@ t_list		*ft_lstnew(void *content);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_lstsize(t_list *lst);
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_tolower(int c);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -41,7 +46,6 @@ int			ft_atoi(const char *str);
 int			ft_toupper(int c);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strlen(const char *str);
 int			ft_isspace(const char c);
 int			ft_strlcpy(char *dst, const char *src, int size);
@@ -70,4 +74,8 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
+char		*set_lchr(char *buf, char **lchr);
+char		*fill_line(int fd, char *buf, char *lchr);
+char		*get_next_line(int fd);
+int			check_file_extension(char *filename);
 #endif

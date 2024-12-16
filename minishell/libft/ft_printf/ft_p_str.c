@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_p_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 20:43:00 by asdebele          #+#    #+#             */
-/*   Updated: 2024/07/15 20:15:34 by asdebele         ###   ########.fr       */
+/*   Created: 2024/03/26 18:38:45 by asdebele          #+#    #+#             */
+/*   Updated: 2024/07/29 18:29:52 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_p_str(char *c)
 {
-	unsigned char	*d;
+	int	i;
 
-	d = (unsigned char *)s;
-	while (n > 0)
+	i = 0;
+	while (c[i])
 	{
-		*d = (unsigned char) c;
-		d++;
-		n--;
+		if ((int)c[i] == 255)
+		{
+			write(1, "\0", 1);
+		}
+		else
+			write(1, &c[i], 1);
+		i++;
 	}
-	return (s);
 }

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_basic.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 20:43:00 by asdebele          #+#    #+#             */
-/*   Updated: 2024/07/15 20:15:34 by asdebele         ###   ########.fr       */
+/*   Created: 2024/03/26 17:03:55 by asdebele          #+#    #+#             */
+/*   Updated: 2024/07/29 18:30:14 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_chardup(char c)
 {
-	unsigned char	*d;
+	char	*str;
 
-	d = (unsigned char *)s;
-	while (n > 0)
+	if (c != '\0')
 	{
-		*d = (unsigned char) c;
-		d++;
-		n--;
+		str = malloc(sizeof(char) * 2);
+		str[0] = (char)c;
+		str[1] = '\0';
 	}
-	return (s);
+	else
+	{
+		str = malloc(sizeof(char) * 3);
+		str[0] = (char)255;
+		str[1] = (char)c;
+		str[2] = '\0';
+	}
+	return (str);
 }

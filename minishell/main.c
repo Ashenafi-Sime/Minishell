@@ -6,13 +6,13 @@
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 09:18:03 by asdebele          #+#    #+#             */
-/*   Updated: 2024/11/26 20:02:27 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:25:57 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
+
 void	init_env(char **env)
 {
 	env[0] = safe_malloc(9);
@@ -88,25 +88,41 @@ int	main(int ac, char **av)
 }
 */
 
-*/
-int	main(int ac, char **av)
-{
-	t_data	*data;
 
+int main(int ac, char **av, char *envp[])
+{
 	(void) ac;
 	(void)av;
+	t_data	*data;
+
+	
 	data = (t_data *)safe_malloc(sizeof(t_data));
 	ft_init(data);
+	set_env(&data->env_stack, envp);
+	print_env(data->env_stack);
+	using_history();
 	while (1)
 	{
+		printf("start\n");
 		if (data->pg_name)
 			data->rl_str = readline(data->pg_name);
 		else
 			data->rl_str = readline("___@minishell\% ");
-		parse_text(data);
-		test_infile(data);// Just for testing not part of project 
-		test_outfile(data); //Just for testing not part of project
-		reset(data); // -> there is error with 2d free 
+		if (!ft_onlyspace(data->rl_str))
+		{
+			parse_text(data);
+			handle_cmd(data);
+			add_history (data->rl_str);
+			//reset(data);
+			free(data->rl_str);
+		}
+		write(1,"====== \n",9);
+		print_env(data->var_stack);
+		printf("\nhere\n");
 	}
-	return 0;
+	free_hist();
+	
+	return (0);
 }
+
+

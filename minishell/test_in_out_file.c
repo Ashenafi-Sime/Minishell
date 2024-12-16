@@ -14,45 +14,22 @@ void	test_infile(t_data *data)
 		else
 			printf("no such  file exit  \n");
 	}
-	else 
-		printf(" no %s \n ", data->rl_str);
 }
 
 
 void	test_outfile(t_data *data)
 {
-	write(1, "test\n", 5);
 	int k = 0;
 	while (k < data->outfile_nb)
 	{
-		printf("outflag : %d \n appendflag : %d\n" , data->outflag, data->appendflag);
-		if (data->outflag)
+		if (check_bit (data->out[k].flag, NEW_FILE))
 		{
-			data->out_fd = open(data->outfile[k], O_CREAT | O_RDWR | O_TRUNC, 00700);
-			if (data->out_fd > 0)
-			{
-				write (data->out_fd, "successfully written to the file\n", 34);
-				close (data->out_fd);
-			}
-			else
-				printf("no such  file exit and not able to create %s \n", data->outfile[k]);
+			write(data->out[k].fd, "This is new file", 17);
 		}
-		else if (data->appendflag)
+		else if (check_bit (data->out[k].flag, APPEND))
 		{
-			data->out_fd = open(data->outfile[k], O_APPEND | O_RDWR, 00700);
-			if (data->out_fd > 0)
-			{
-				write (data->out_fd, "successfully append to the file\n", 33);
-				close (data->out_fd);
-			}
-			else
-				printf("no such  file exit  \n");
+			write(data->out[k].fd, "This is existing file", 22);
 		}
-		else
-			//printf(" append no => %s \n ", data->rl_str);
-		printf(" => %s \n ", data->rl_str);
-
 		k++;
 	}
-	
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asdebele <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 20:51:44 by asdebele          #+#    #+#             */
-/*   Updated: 2024/12/07 13:33:41 by asdebele         ###   ########.fr       */
+/*   Updated: 2024/03/23 13:02:30 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	cal_len(int n)
+static int	cal_len(unsigned int n)
 {
 	int		len;
 
@@ -30,7 +30,7 @@ static int	cal_len(int n)
 	return (len);
 }
 
-char	*set_val(int n, char *ans, int len)
+static char	*set_val(unsigned int n, char *ans, int len)
 {
 	len--;
 	while (n)
@@ -42,7 +42,7 @@ char	*set_val(int n, char *ans, int len)
 	return (ans);
 }
 
-char	*ft_uitoa(int n)
+char	*ft_uitoa(unsigned int n)
 {
 	int		len;
 	char	*ans;

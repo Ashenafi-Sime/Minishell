@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 20:43:00 by asdebele          #+#    #+#             */
-/*   Updated: 2024/07/15 20:15:34 by asdebele         ###   ########.fr       */
+/*   Created: 2024/12/02 20:24:20 by asdebele          #+#    #+#             */
+/*   Updated: 2024/12/02 23:22:15 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_strtok(t_env *env, char *str, char c)
 {
-	unsigned char	*d;
+	int	i;
+	int	len;
 
-	d = (unsigned char *)s;
-	while (n > 0)
+	i = -1;
+	len = ft_strlen(str);
+	while (str[++i])
 	{
-		*d = (unsigned char) c;
-		d++;
-		n--;
+		if (str[i] == c)
+			break ;
 	}
-	return (s);
+	env->key = ft_substr(str, 0, i);
+	env->value = ft_substr(str, (i + 1), (len - i));
+}
+
+
+char	*ft_strkey(char *str, char c)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == c)
+			break ;
+	}
+	return (ft_substr(str, 0, i));
 }

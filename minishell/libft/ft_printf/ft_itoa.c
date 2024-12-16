@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
+/*   By: asdebele <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 20:51:44 by asdebele          #+#    #+#             */
-/*   Updated: 2024/12/07 13:33:41 by asdebele         ###   ########.fr       */
+/*   Created: 2024/03/11 20:03:39 by asdebele          #+#    #+#             */
+/*   Updated: 2024/03/11 20:03:49 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	cal_len(int n)
 {
@@ -30,9 +30,14 @@ static int	cal_len(int n)
 	return (len);
 }
 
-char	*set_val(int n, char *ans, int len)
+static char	*set_val(int n, char *ans, int len)
 {
 	len--;
+	if (n < 0)
+	{
+		n *= -1;
+		ans[0] = '-';
+	}
 	while (n)
 	{
 		ans[len] = n % 10 + '0';
@@ -42,7 +47,7 @@ char	*set_val(int n, char *ans, int len)
 	return (ans);
 }
 
-char	*ft_uitoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*ans;
@@ -56,7 +61,13 @@ char	*ft_uitoa(int n)
 		ans[0] = '0';
 		ans[1] = '\0';
 	}
-	set_val(n, ans, len);
+	else if (n == -2147483648)
+	{
+		ans[len - 1] = '8';
+		set_val(-214748364, ans, len - 1);
+	}
+	else
+		set_val(n, ans, len);
 	ans[len] = '\0';
 	return (ans);
 }

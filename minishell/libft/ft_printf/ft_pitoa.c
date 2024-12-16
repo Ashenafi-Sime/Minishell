@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_pitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asdebele <asdebele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 20:51:44 by asdebele          #+#    #+#             */
-/*   Updated: 2024/12/07 13:33:41 by asdebele         ###   ########.fr       */
+/*   Created: 2024/03/26 18:39:17 by asdebele          #+#    #+#             */
+/*   Updated: 2024/12/07 13:40:28 by asdebele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static int	cal_len(int n)
+static int	cal_len(size_t n)
 {
 	int		len;
 
@@ -25,38 +25,47 @@ static int	cal_len(int n)
 	while (n)
 	{
 		len++;
-		n /= 10;
+		n /= 16;
 	}
 	return (len);
 }
 
-char	*set_val(int n, char *ans, int len)
+char	set_value(int nb)
+{
+	if (nb >= 10)
+		return (nb + 87);
+	else
+		return (nb + '0');
+}
+
+static char	*_tostring_(size_t n, char *ans, int len)
 {
 	len--;
+	ans[0] = '0';
+	ans[1] = 'x';
 	while (n)
 	{
-		ans[len] = n % 10 + '0';
-		n /= 10;
+		ans[len] = set_value(n % 16);
+		n /= 16;
 		len --;
 	}
 	return (ans);
 }
 
-char	*ft_uitoa(int n)
+char	*ft_pitoa(size_t n) //0 -x, 1- X, 2 - p
 {
 	int		len;
 	char	*ans;
 
-	len = cal_len(n);
+	len = cal_len(n) + 2;
+	if ((size_t)n == 0)
+	{
+		return (ft_strdup("(nil)"));
+	}
 	ans = (char *)malloc(len + 1);
 	if (ans == NULL)
 		return (NULL);
-	if (n == 0)
-	{
-		ans[0] = '0';
-		ans[1] = '\0';
-	}
-	set_val(n, ans, len);
+	_tostring_(n, ans, len);
 	ans[len] = '\0';
 	return (ans);
 }
